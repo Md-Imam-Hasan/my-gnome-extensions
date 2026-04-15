@@ -1,0 +1,7 @@
+{
+  "uuid": "uptime@imam",
+  "name": "System Monitor",
+  "description": "Compact uptime, CPU, and RAM in the top bar with a detailed metrics menu (memory, disk, network).",
+  "version": 2,
+  "shell-version": ["45", "46", "47", "48"]
+}
