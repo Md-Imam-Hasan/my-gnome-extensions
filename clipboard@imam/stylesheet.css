@@ -1,0 +1,8 @@
+/* Limit preview width for long clipboard lines */
+.clipboard-history-row {
+  max-width: 42em;
+}
+
+.clipboard-history-row st-label {
+  max-width: 40em;
+}
