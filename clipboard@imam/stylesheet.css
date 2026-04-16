@@ -20,3 +20,8 @@
 .clipboard-pin-button {
   padding: 4px;
 }
+
+/* History list viewport: height set in JS (40% of monitor); inner content scrolls */
+.clipboard-history-scroll {
+  min-height: 0;
+}

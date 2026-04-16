@@ -50,7 +50,13 @@ export default class ClipboardManagerExtension extends Extension {
                 this._indicator.setLocked(locked);
         });
 
-        log('[clipboard@imam] extension enabled');
+        import('resource:///org/gnome/shell/misc/config.js')
+            .then(Config => {
+                log(`[clipboard@imam] extension enabled — GNOME Shell ${Config.PACKAGE_VERSION ?? '?'}`);
+            })
+            .catch(() => {
+                log('[clipboard@imam] extension enabled (shell version unavailable)');
+            });
     }
 
     disable() {

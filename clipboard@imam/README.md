@@ -15,6 +15,23 @@ Top-bar **clipboard history** for **plain text**: search, category filters, opti
 
 Copy this directory to `~/.local/share/gnome-shell/extensions/clipboard@imam/`, enable `clipboard@imam`, then reload GNOME Shell. See the [repository README](../README.md) for generic steps.
 
+### Checking your GNOME Shell version
+
+From a terminal:
+
+```bash
+gnome-shell --version
+```
+
+Or:
+
+```bash
+echo $XDG_SESSION_TYPE
+journalctl -b /usr/bin/gnome-shell -o cat | head -1
+```
+
+When the extension loads, it logs a line like `extension enabled — GNOME Shell 46.x` (see [Debugging](#debugging)).
+
 ## Data on disk
 
 | File | Purpose |

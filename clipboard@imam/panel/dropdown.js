@@ -6,6 +6,7 @@ import Clutter from 'gi://Clutter';
 import GLib from 'gi://GLib';
 import St from 'gi://St';
 
+import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 import * as PopupMenu from 'resource:///org/gnome/shell/ui/popupMenu.js';
 
 import * as C from '../utils/constants.js';
@@ -66,6 +67,12 @@ export class ClipboardDropdown {
 
         /** @type {PopupMenu.PopupMenuSection | null} */
         this._historySection = null;
+        /** @type {St.ScrollView | null} */
+        this._historyScrollView = null;
+        /** @type {PopupMenu.PopupMenuSection | null} */
+        this._historyScrollWrapper = null;
+        this._menuOpenStateId = 0;
+        this._monitorsChangedId = 0;
         /** @type {PopupMenu.PopupMenuItem | null} */
         this._clearItem = null;
         /** @type {PopupMenu.PopupMenuItem | null} */
@@ -161,7 +168,29 @@ export class ClipboardDropdown {
         this._menu.addMenuItem(hint);
 
         this._historySection = new M.PopupMenuSection();
-        this._menu.addMenuItem(this._historySection);
+
+        this._historyScrollView = new St.ScrollView({
+            style_class: 'clipboard-history-scroll',
+            hscrollbar_policy: St.PolicyType.NEVER,
+            vscrollbar_policy: St.PolicyType.AUTOMATIC,
+            overlay_scrollbars: true,
+            x_expand: true,
+            y_expand: false,
+        });
+        this._historyScrollView.add_child(this._historySection.actor);
+
+        this._historyScrollWrapper = new M.PopupMenuSection();
+        this._historyScrollWrapper.actor.add_child(this._historyScrollView);
+        this._menu.addMenuItem(this._historyScrollWrapper);
+
+        this._menuOpenStateId = this._menu.connect('open-state-changed', (_menu, open) => {
+            if (open)
+                this._updateHistoryScrollMaxHeight();
+        });
+        /** Meta.Display has no monitors-changed in recent Mutter; use LayoutManager. */
+        this._monitorsChangedId = Main.layoutManager.connect('monitors-changed', () => {
+            this._updateHistoryScrollMaxHeight();
+        });
 
         const cfg = this._storage.getConfig();
         this._persistItem = new M.PopupMenuItem('');
@@ -251,6 +280,29 @@ export class ClipboardDropdown {
             this._encPassRow.actor.visible =
                 !!c.encrypt && this._security.encryptionAvailable && !this._storage.isLocked();
         }
+    }
+
+    /**
+     * Cap history list at 40% of current monitor height so long lists scroll inside St.ScrollView.
+     */
+    _updateHistoryScrollMaxHeight() {
+        if (!this._historyScrollView)
+            return;
+        let screenH = 1080;
+        try {
+            const mon = Main.layoutManager.currentMonitor;
+            if (mon)
+                screenH = mon.height;
+            else {
+                const idx = global.display.get_primary_monitor();
+                const g = global.display.get_monitor_geometry(idx);
+                screenH = g.height;
+            }
+        } catch {
+            /* keep default */
+        }
+        const maxH = Math.max(120, Math.floor(screenH * 0.4));
+        this._historyScrollView.set_height(maxH);
     }
 
     /**
@@ -391,6 +443,24 @@ export class ClipboardDropdown {
             this._searchDebounceId = 0;
         }
 
+        if (this._menuOpenStateId && this._menu) {
+            try {
+                this._menu.disconnect(this._menuOpenStateId);
+            } catch {
+                /* ignore */
+            }
+            this._menuOpenStateId = 0;
+        }
+
+        if (this._monitorsChangedId) {
+            try {
+                Main.layoutManager.disconnect(this._monitorsChangedId);
+            } catch {
+                /* ignore */
+            }
+            this._monitorsChangedId = 0;
+        }
+
         if (this._unsub) {
             this._unsub();
             this._unsub = null;
@@ -400,6 +470,8 @@ export class ClipboardDropdown {
         this._passEntry = null;
         this._searchEntry = null;
         this._historySection = null;
+        this._historyScrollView = null;
+        this._historyScrollWrapper = null;
         this._clearItem = null;
         this._persistItem = null;
         this._encryptItem = null;
