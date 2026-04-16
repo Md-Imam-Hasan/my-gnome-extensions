@@ -1,12 +1,15 @@
-# `services/` — Clipboard History integration
-
-Clipboard pipeline for **Clipboard History** (`clipboard@imam`).
+# `services/` — Clipboard extension backends
 
 ## Files
 
-- **`clipboardService.js`** — Subscribes to **`Meta.Selection` `owner-changed`** (clipboard selection), reads text with **`St.Clipboard`**, applies filters (size, empty, normalization), pushes to [`../store/historyStore.js`](../store/historyStore.js), and exposes **`copyToClipboard()`** for the UI. Handles “ignore next read” after programmatic **`set_text`** so re-copy does not duplicate history entries.
+| File | Role |
+|------|------|
+| [`clipboardService.js`](clipboardService.js) | `Meta.Selection` `owner-changed`, `St.Clipboard` read/write, classification via [`../utils/category.js`](../utils/category.js), pushes structured entries to the store. |
+| [`storageService.js`](storageService.js) | `~/.local/share/clipboard-extension/` JSON load/save, debounced writes, optional encryption envelope, corrupted-file handling, `config.json` for persist/encrypt flags. |
+| [`searchService.js`](searchService.js) | Case-insensitive substring search + category filter + display sort (pinned/recency). Optional safe Pango markup for match highlighting. |
+| [`securityService.js`](securityService.js) | PBKDF2 + AES-256-GCM via `crypto.subtle` when available; passphrase in memory; locked state on decrypt failure. |
 
 ## Notes
 
-- This is the **only** module that should talk to the Shell clipboard APIs for this extension.
-- `Gdk.Clipboard` is not used here; the compositor clipboard is exposed through Meta + St in GNOME Shell.
+- Clipboard text must never be logged from these modules.
+- UI and storage are separated: dropdown talks to `StorageService` / `SecurityService`, not raw `Gio` for history content.

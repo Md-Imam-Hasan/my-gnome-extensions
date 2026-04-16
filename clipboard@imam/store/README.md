@@ -1,11 +1,9 @@
-# `store/` — Clipboard History state
-
-In-memory state for **Clipboard History** (`clipboard@imam`).
+# `store/` — Clipboard history state
 
 ## Files
 
-- **`historyStore.js`** — Holds a newest-first list of strings, enforces a maximum length, skips consecutive duplicates, and notifies subscribers on change. Exposes **`clear()`** for the UI.
+- **`historyStore.js`** — Newest-first **structured entries** (`id`, `text`, `category`, `createdAt`, optional `pinned`, `lastUsedAt`), max length from [`../utils/constants.js`](../utils/constants.js), consecutive duplicate suppression, `replaceEntries` for load, `subscribe` for UI and autosave.
 
 ## Notes
 
-- No persistence on disk in v1; restarting GNOME Shell clears history.
+- Plaintext never appears in logs from this module.

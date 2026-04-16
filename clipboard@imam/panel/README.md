@@ -1,13 +1,10 @@
 # `panel/` — Clipboard History UI
 
-Top-bar and menu for **Clipboard History** (`clipboard@imam`).
-
 ## Files
 
-- **`indicator.js`** — `PanelMenu.Button` with a paste icon only; registers in the status area and owns the dropdown.
-- **`dropdown.js`** — Menu sections: scrollable history (`PopupMenuSection`), empty-state row, and **Clear history**. Rows call `ClipboardService.copyToClipboard()` only; no direct Gdk/St clipboard use outside the service.
+- **`indicator.js`** — `PanelMenu.Button` with `edit-paste-symbolic`, switches to `channel-secure-symbolic` when storage reports a **locked** (decrypt failure) state.
+- **`dropdown.js`** — Search entry (debounced), category submenu, hint line; history rows are **PopupImageMenuItem** with a **star button** to pin/unpin and row activate to copy; optional search **bold** match; **Unlock** block; **Save to disk** / **Encrypt** toggles; **encryption passphrase** field; **Clear history**.
 
 ## Notes
 
-- Subscribes to `HistoryStore` to rebuild history rows when the store changes.
-- Preview text uses [`../utils/format.js`](../utils/format.js).
+- Filtering uses [`../services/searchService.js`](../services/searchService.js); persistence toggles call only [`../services/storageService.js`](../services/storageService.js).

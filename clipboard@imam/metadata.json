@@ -1,8 +1,8 @@
 {
   "uuid": "clipboard@imam",
   "name": "Clipboard History",
-  "description": "Tracks recent clipboard text and re-copy from the top bar (memory-only, event-driven).",
-  "version": 1,
+  "description": "Searchable clipboard history with categories, optional encrypted JSON persistence, and top-bar access (GNOME 45+).",
+  "version": 2,
   "shell-version": ["45", "46", "47", "48"],
   "stylesheet": "stylesheet.css"
 }

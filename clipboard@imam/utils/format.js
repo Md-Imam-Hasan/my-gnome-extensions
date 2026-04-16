@@ -2,8 +2,10 @@
  * Text truncation, normalization, and size limits for clipboard content.
  */
 
+import { MAX_CLIPBOARD_BYTES as _MAX_BYTES } from './constants.js';
+
 /** Maximum UTF-8 byte length accepted from the clipboard (10 KiB). */
-export const MAX_CLIPBOARD_BYTES = 10 * 1024;
+export const MAX_CLIPBOARD_BYTES = _MAX_BYTES;
 
 /** Preview length for menu rows (characters). */
 export const PREVIEW_MAX_CHARS = 96;

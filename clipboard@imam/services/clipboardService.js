@@ -7,6 +7,7 @@ import Meta from 'gi://Meta';
 import Shell from 'gi://Shell';
 import St from 'gi://St';
 
+import { classifyCategory } from '../utils/category.js';
 import * as Format from '../utils/format.js';
 
 const LOG = '[clipboard@imam]';
@@ -98,7 +99,8 @@ export class ClipboardService {
                         this._lastProgrammaticText = null;
                     }
 
-                    this._store.push(normalized);
+                    const cat = classifyCategory(normalized);
+                    this._store.addFromClipboard(normalized, cat);
                 } catch (e) {
                     console.error(LOG, 'clipboard text handler', e);
                 } finally {
@@ -118,7 +120,11 @@ export class ClipboardService {
     /**
      * @param {string} text Full text to place on the clipboard
      */
-    copyToClipboard(text) {
+    /**
+     * @param {string} text
+     * @param {{ store?: import('../store/historyStore.js').HistoryStore, entryId?: string }} [opts]
+     */
+    copyToClipboard(text, opts) {
         if (this._stopped || !this._stClipboard)
             return;
 
@@ -132,6 +138,8 @@ export class ClipboardService {
 
             this._lastProgrammaticText = normalized;
             this._stClipboard.set_text(St.ClipboardType.CLIPBOARD, normalized);
+            if (opts?.store && opts.entryId)
+                opts.store.touchUsed(opts.entryId);
         } catch {
             this._lastProgrammaticText = null;
         }

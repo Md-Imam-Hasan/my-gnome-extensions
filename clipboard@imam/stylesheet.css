@@ -6,3 +6,17 @@
 .clipboard-history-row st-label {
   max-width: 40em;
 }
+
+.clipboard-search-entry,
+.clipboard-pass-entry {
+  min-width: 18em;
+}
+
+.clipboard-history-hint {
+  font-size: 0.85em;
+  opacity: 0.85;
+}
+
+.clipboard-pin-button {
+  padding: 4px;
+}

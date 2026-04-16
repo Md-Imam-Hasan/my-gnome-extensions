@@ -12,7 +12,7 @@ Personal collection of **GNOME Shell 45+** extensions written as **ES modules** 
 | UUID | Name | Summary |
 |------|------|---------|
 | [`uptime@imam`](uptime@imam/README.md) | System Monitor | Top-bar uptime, CPU, and RAM; dropdown with memory, disk, and network metrics. |
-| [`clipboard@imam`](clipboard@imam/README.md) | Clipboard History | Recent clipboard text in the top bar; memory-only history; event-driven updates. |
+| [`clipboard@imam`](clipboard@imam/README.md) | Clipboard History | Searchable history, categories, optional encrypted JSON persistence; event-driven clipboard capture. |
 
 ## Install (any extension)
 
