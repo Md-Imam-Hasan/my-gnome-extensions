@@ -1,4 +1,4 @@
-# `clipboard@imam` — Clipboard History
+# `clipboard-manager@muhammad-imam-hasan.com` — Clipboard History
 
 Top-bar **clipboard history** for **plain text**: search, category filters, optional **JSON persistence**, and optional **AES-256-GCM** encryption (via Web Crypto in GJS). Clipboard capture stays **event-driven** (`Meta.Selection` + `St.Clipboard`).
 
@@ -13,7 +13,7 @@ Top-bar **clipboard history** for **plain text**: search, category filters, opti
 
 ## Install
 
-Copy this directory to `~/.local/share/gnome-shell/extensions/clipboard@imam/`, enable `clipboard@imam`, then reload GNOME Shell. See the [repository README](../README.md) for generic steps.
+Copy this directory to `~/.local/share/gnome-shell/extensions/clipboard-manager@muhammad-imam-hasan.com/`, enable `clipboard-manager@muhammad-imam-hasan.com`, then reload GNOME Shell. See the [repository README](../README.md) for generic steps.
 
 ### Checking your GNOME Shell version
 
@@ -127,10 +127,10 @@ A line printing `true` or `false` indicates whether `subtle` exists in that inte
 
 ## Debugging
 
-Only operational messages use the `[clipboard@imam]` prefix—never clipboard body text:
+Only operational messages use the `[clipboard-manager@muhammad-imam-hasan.com]` prefix—never clipboard body text:
 
 ```bash
-journalctl -f /usr/bin/gnome-shell | grep --line-buffered 'clipboard@imam'
+journalctl -f /usr/bin/gnome-shell | grep --line-buffered 'clipboard-manager@muhammad-imam-hasan.com'
 ```
 
 ## Privacy

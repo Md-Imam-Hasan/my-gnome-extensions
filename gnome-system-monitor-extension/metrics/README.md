@@ -1,6 +1,6 @@
 # `metrics/` — System metric readers
 
-Small modules that read **Linux** system information (typically via `/proc` or similar) for **System Monitor** (`uptime@imam`).
+Small modules that read **Linux** system information (typically via `/proc` or similar) for **System Monitor** (`system-monitor@muhammad-imam-hasan.com`).
 
 ## Files
 

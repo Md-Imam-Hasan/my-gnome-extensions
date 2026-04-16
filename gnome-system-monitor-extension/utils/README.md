@@ -1,6 +1,6 @@
 # `utils/` — System Monitor formatting
 
-Shared string/format helpers for **System Monitor** (`uptime@imam`).
+Shared string/format helpers for **System Monitor** (`system-monitor@muhammad-imam-hasan.com`).
 
 ## Files
 

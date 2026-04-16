@@ -1,5 +1,5 @@
 {
-  "uuid": "clipboard@imam",
+  "uuid": "clipboard-manager@muhammad-imam-hasan.com",
   "name": "Clipboard History",
   "description": "Searchable clipboard history with categories, optional encrypted JSON persistence, and top-bar access (GNOME 45+).",
   "version": 2,

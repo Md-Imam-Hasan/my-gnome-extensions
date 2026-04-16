@@ -1,6 +1,6 @@
 # `panel/` — System Monitor UI
 
-Top-bar integration for **System Monitor** (`uptime@imam`).
+Top-bar integration for **System Monitor** (`system-monitor@muhammad-imam-hasan.com`).
 
 ## Files
 

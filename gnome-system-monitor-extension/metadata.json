@@ -1,5 +1,5 @@
 {
-  "uuid": "uptime@imam",
+  "uuid": "system-monitor@muhammad-imam-hasan.com",
   "name": "System Monitor",
   "description": "Compact uptime, CPU, and RAM in the top bar with a detailed metrics menu (memory, disk, network).",
   "version": 2,

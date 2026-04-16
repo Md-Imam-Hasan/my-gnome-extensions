@@ -1,4 +1,4 @@
-# `uptime@imam` — System Monitor
+# `system-monitor@muhammad-imam-hasan.com` — System Monitor
 
 Compact **uptime**, **CPU**, and **RAM** in the top panel, with a dropdown that shows richer metrics (memory, disk, network).
 
@@ -10,7 +10,7 @@ Compact **uptime**, **CPU**, and **RAM** in the top panel, with a dropdown that 
 
 ## Install
 
-Copy this directory to `~/.local/share/gnome-shell/extensions/uptime@imam/`, enable `uptime@imam`, then reload GNOME Shell. See the [repository README](../README.md) for generic steps.
+Copy this directory to `~/.local/share/gnome-shell/extensions/system-monitor@muhammad-imam-hasan.com/`, enable `system-monitor@muhammad-imam-hasan.com`, then reload GNOME Shell. See the [repository README](../README.md) for generic steps.
 
 ## Structure
 
@@ -25,4 +25,4 @@ Copy this directory to `~/.local/share/gnome-shell/extensions/uptime@imam/`, ena
 
 ## Debugging
 
-Use `journalctl -f /usr/bin/gnome-shell` and watch for messages tagged with `uptime@imam` where logging is used.
+Use `journalctl -f /usr/bin/gnome-shell` and watch for messages tagged with `system-monitor@muhammad-imam-hasan.com` where logging is used.

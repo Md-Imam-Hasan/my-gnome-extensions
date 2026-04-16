@@ -1,6 +1,6 @@
 # `services/` — System Monitor core
 
-Orchestration layer for **System Monitor** (`uptime@imam`).
+Orchestration layer for **System Monitor** (`system-monitor@muhammad-imam-hasan.com`).
 
 ## Files
 

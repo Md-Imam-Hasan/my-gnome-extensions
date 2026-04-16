@@ -11,8 +11,8 @@ Personal collection of **GNOME Shell 45+** extensions written as **ES modules** 
 
 | UUID | Name | Summary |
 |------|------|---------|
-| [`uptime@imam`](uptime@imam/README.md) | System Monitor | Top-bar uptime, CPU, and RAM; dropdown with memory, disk, and network metrics. |
-| [`clipboard@imam`](clipboard@imam/README.md) | Clipboard History | Searchable history, categories, optional encrypted JSON persistence; event-driven clipboard capture. |
+| [`system-monitor@muhammad-imam-hasan.com`](system-monitor@muhammad-imam-hasan.com/README.md) | System Monitor | Top-bar uptime, CPU, and RAM; dropdown with memory, disk, and network metrics. |
+| [`clipboard-manager@muhammad-imam-hasan.com`](clipboard-manager@muhammad-imam-hasan.com/README.md) | Clipboard History | Searchable history, categories, optional encrypted JSON persistence; event-driven clipboard capture. |
 
 ## Install (any extension)
 
@@ -23,15 +23,15 @@ Personal collection of **GNOME Shell 45+** extensions written as **ES modules** 
    Example:
 
    ```bash
-   cp -r uptime@imam ~/.local/share/gnome-shell/extensions/
-   cp -r clipboard@imam ~/.local/share/gnome-shell/extensions/
+   cp -r system-monitor@muhammad-imam-hasan.com ~/.local/share/gnome-shell/extensions/
+   cp -r clipboard-manager@muhammad-imam-hasan.com ~/.local/share/gnome-shell/extensions/
    ```
 
 2. Enable it:
 
    ```bash
-   gnome-extensions enable uptime@imam
-   gnome-extensions enable clipboard@imam
+   gnome-extensions enable system-monitor@muhammad-imam-hasan.com
+   gnome-extensions enable clipboard-manager@muhammad-imam-hasan.com
    ```
 
    Or use the **Extensions** application.
@@ -60,8 +60,8 @@ journalctl -f /usr/bin/gnome-shell | grep --line-buffered '@imam'
 ```
 my-extensions/
 ├── README.md                 # This file
-├── uptime@imam/              # System Monitor extension
-└── clipboard@imam/           # Clipboard History extension
+├── system-monitor@muhammad-imam-hasan.com/              # System Monitor extension
+└── clipboard-manager@muhammad-imam-hasan.com/           # Clipboard History extension
 ```
 
 Each extension folder has its own `README.md` and subfolders include short `README.md` files describing their role.
